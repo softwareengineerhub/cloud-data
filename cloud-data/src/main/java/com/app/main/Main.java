@@ -5,6 +5,10 @@
  */
 package com.app.main;
 
+import com.app.config.AppConfig;
+import com.app.config.ThymeleafConfig;
+import org.springframework.boot.SpringApplication;
+
 /**
  *
  * @author kerch
@@ -12,7 +16,7 @@ package com.app.main;
 public class Main {
     
     public static void main(String[] args) {
-        
+        SpringApplication.run(new Object[]{AppConfig.class,ThymeleafConfig.class}, args);
     }
     
 }
