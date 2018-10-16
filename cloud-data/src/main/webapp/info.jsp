@@ -9,13 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+         <%@include file="images/cloudImageStyle.css"%>
     </head>
     <body>
     <center>
-        <h1>Hello from "Java_cloud_app"!</h1>
+        <h1>Hello from "Java cloud app"!</h1>
         <p>
-            Cloud App is an easy-to-use screen recorder that brings video, webcam, screenshot annotation, and GIF creation securely to the cloud. Capture, share, and accelerate your business communication.
+            Cloud App is an easy-to-use screen recorder that brings video, <br>
+            webcam, screenshot annotation, and GIF creation securely to the cloud.<br> 
+            
+            Capture, share, and accelerate your business communication.<br>
         </p>
     </center>
     </body>

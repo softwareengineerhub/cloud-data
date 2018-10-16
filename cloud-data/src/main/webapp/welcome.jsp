@@ -8,15 +8,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>JSP Page</title>
-        
+         <%@include file="images/cloudImageStyle.css"%>
     </head>
     <body>
     <center>
         <h1>Cloud App</h1>
         <p>If you want to login please: <a href="login.jsp" target="_blank">go here</a></p>
-        <p>To signup: <a href="Signup.jsp" target="_blank"> go here</a></p>
+        <p>To signup: <a href="signup.jsp" target="_blank"> go here</a></p>
         <p>More about us: <a href="info.jsp" target="_blank"> go here</a></p>
     </center>
 </body>

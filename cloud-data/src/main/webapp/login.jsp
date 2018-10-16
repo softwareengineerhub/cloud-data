@@ -4,13 +4,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+         <%@include file="images/cloudImageStyle.css"%>
     </head>
     <body>
     <center>
         <table style="padding-top: 20px;">
             <tr>
                 <td>
-                    Login
+                    <h1>Login</h1>
                     <br>
                     <form method="POST" action="j_security_check">
                         <p>Username:<br>
