@@ -1,1 +1,6 @@
-C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\data\servlets\LoginServlet.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\FakeDS.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\SignupServlet.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\AuthDAO.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\LoginServlet.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\AuthDAOImpl.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\AuthFilter.java

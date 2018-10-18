@@ -1,0 +1,6 @@
+com\cloud\auth\AuthDAOImpl.class
+com\cloud\auth\AuthDAO.class
+com\cloud\auth\LoginServlet.class
+com\cloud\auth\AuthFilter.class
+com\cloud\auth\FakeDS.class
+com\cloud\auth\SignupServlet.class

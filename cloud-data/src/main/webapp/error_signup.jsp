@@ -1,21 +1,17 @@
 <%-- 
-    Document   : error_login
-    Created on : Apr 17, 2018, 1:47:55 PM
+    Document   : newjsperror_signup
+    Created on : Oct 17, 2018, 9:17:03 PM
     Author     : kerch
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <%@include file="images/cloudImageStyle.css"%>
+        <title>JSP Page</title>
     </head>
     <body>
-    <center>
-        <h1>Incorrect Signup</h1>
-    </center>
+        <h1>Hello World!</h1>
     </body>
 </html>
-s
