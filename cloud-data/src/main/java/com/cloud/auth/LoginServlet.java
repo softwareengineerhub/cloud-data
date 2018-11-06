@@ -6,8 +6,6 @@
 package com.cloud.auth;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,8 +46,5 @@ public class LoginServlet extends HttpServlet {
             session.invalidate();
         }
         resp.sendRedirect("welcome.jsp");
-    }
-    
-    
-    
+    }   
 }

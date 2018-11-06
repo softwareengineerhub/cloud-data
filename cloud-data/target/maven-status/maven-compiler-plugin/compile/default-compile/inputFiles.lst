@@ -1,6 +1,10 @@
 C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\FakeDS.java
 C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\SignupServlet.java
 C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\AuthDAO.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\service\UploadServlet.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\metadata\MetaDataDAO.java
 C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\LoginServlet.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\service\DownloadServlet.java
 C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\AuthDAOImpl.java
 C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\auth\AuthFilter.java
+C:\GIT_PROJECTS\WORK\cloud-data\cloud-data\src\main\java\com\cloud\metadata\MetaDataDAOImpl.java
