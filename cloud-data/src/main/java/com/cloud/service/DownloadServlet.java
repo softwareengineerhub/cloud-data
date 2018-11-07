@@ -33,6 +33,7 @@ public class DownloadServlet extends HttpServlet {
         File[] files=file.listFiles();
         if(files!=null && files.length!=0){
             //for(){
+            
             File fileData = files[0];
             System.out.println("########"+fileData.getName()+"########");
             //int start=fileData.getName().indexOf(".");

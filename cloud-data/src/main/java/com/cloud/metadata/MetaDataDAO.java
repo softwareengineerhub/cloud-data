@@ -5,6 +5,9 @@
  */
 package com.cloud.metadata;
 
+import com.cloud.pojo.FileData;
+import java.util.List;
+
 /**
  *
  * @author kerch
@@ -17,9 +20,11 @@ public interface MetaDataDAO {
     
     public void updateFile(String fileName, String fileMask, long size, String device, long currentDate, String user);
     
-    public void deleteFile(String fileName, String fileMask, String user);
+    public void deleteFile(int id);
     
     //public void readFile(String fileName, String fileMask, String user);
+    
+    public List<FileData> getAll(String userName);
     
     
 }

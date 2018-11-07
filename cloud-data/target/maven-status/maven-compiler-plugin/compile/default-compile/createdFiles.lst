@@ -1,10 +1,12 @@
-com\cloud\auth\AuthDAOImpl.class
 com\cloud\metadata\MetaDataDAOImpl.class
+com\cloud\pojo\FileData.class
+com\cloud\service\DeleteServlet.class
+com\cloud\auth\AuthDAO.class
+com\cloud\auth\LoginServlet.class
+com\cloud\auth\AuthDAOImpl.class
 com\cloud\service\UploadServlet.class
 com\cloud\auth\SignupServlet.class
 com\cloud\metadata\MetaDataDAO.class
 com\cloud\service\DownloadServlet.class
-com\cloud\auth\AuthDAO.class
-com\cloud\auth\LoginServlet.class
 com\cloud\auth\AuthFilter.class
 com\cloud\auth\FakeDS.class

@@ -7,6 +7,8 @@ package com.cloud.service;
 
 import com.cloud.metadata.MetaDataDAO;
 import com.cloud.metadata.MetaDataDAOImpl;
+import com.cloud.metadata.Servise;
+import com.cloud.metadata.ServiseImpl;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -34,6 +36,7 @@ public class UploadServlet extends HttpServlet {
 
     private static final String FILE_DIR = "C:\\GIT_PROJECTS\\WORK\\cloud-data";
     private MetaDataDAO metaDataDAO = new MetaDataDAOImpl();
+    private Servise servise = new ServiseImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,12 +48,19 @@ public class UploadServlet extends HttpServlet {
         if (!file.exists()) {
             file.mkdir();
         }
-        for (Part part : files) {
+        for (Part part : files) {            
             String contentType = part.getContentType();
             //application/pdf
             String[] array = contentType.split("\\/");
             String fileMask = array[1];
-
+            
+            //content-disposition=form-data; name="data"; filename="Ð?Ð¼Ñ„Ð¸Ñ‚ÐµÐ°Ñ‚Ñ€_R-1_P-12_1506084457_636748706345897818.pdf"
+            //Ð?Ð¼Ñ„Ð¸Ñ‚ÐµÐ°Ñ‚Ñ€_R-1_P-12_1506084457_636748706345897818.pdf
+            String headerValue=part.getHeader("content-disposition");
+            System.out.println(headerValue);
+            String fileName = servise.fileNameParser(headerValue);
+            System.out.println("AfterParsingFileName=" + fileName);
+                    
             //System.out.println(part.getName());
             //System.out.println(part.getSize());
             long currentDate = System.currentTimeMillis();

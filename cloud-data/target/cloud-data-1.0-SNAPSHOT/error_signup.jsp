@@ -9,6 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+         <%@include file="images/cloudImageStyle.css"%>
+        </style>
         <title>JSP Page</title>
     </head>
     <body>

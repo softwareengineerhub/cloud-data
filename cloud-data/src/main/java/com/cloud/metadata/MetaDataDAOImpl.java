@@ -6,10 +6,17 @@
 package com.cloud.metadata;
 
 import com.cloud.auth.FakeDS;
+import com.cloud.pojo.FileData;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sql.DataSource;
 
 /**
@@ -43,7 +50,7 @@ public class MetaDataDAOImpl implements MetaDataDAO {
             
             PreparedStatement ps = 
                     c.prepareStatement(
-                            "INSERT INTO FILES(name, type, size, device, last_updated, created_date, user_id) "
+                            "INSERT INTO files(name, type, size, device, last_updated, created_date, user_id) "
                     + " values(?,?,?,?,?,?,(SELECT id FROM cloud_data.users where username=?))");
             
             
@@ -79,14 +86,47 @@ public class MetaDataDAOImpl implements MetaDataDAO {
     }
 
     @Override
-    public void deleteFile(String fileName, String fileMask, String user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteFile(int id) {
+        try(Connection c = ds.getConnection()){
+            PreparedStatement ps = c.prepareStatement("DELETE FROM files WHERE id=?");
+            ps.setInt(1, id);    
+            ps.execute();    
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override
-    public void readFile(String fileName, String fileMask, String user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<FileData> getAll(String userName) {
+    List<FileData> files = new ArrayList<FileData>();
+    try(Connection c = ds.getConnection()){
+        PreparedStatement ps = c.prepareStatement("SELECT * FROM files WHERE user_id=(SELECT id FROM users WHERE username=?)");
+        ps.setString(1, userName);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            FileData fd = new FileData();
+            String fileName = rs.getString("name");
+            int id = rs.getInt("id");
+            long size = rs.getLong("size");
+            String fileMask = rs.getString("type");
+            Timestamp createdDate = rs.getTimestamp("created_date");
+            fd.setFileName(fileName);
+            fd.setFileMask(fileMask);
+            fd.setSize(size);
+            fd.setCreatedDate(createdDate);
+            files.add(fd);
+            fd.setId(id);
+        }
+        return files;
+    }   catch (SQLException ex) {
+     throw new RuntimeException(ex);
     }
+    }
+
+//    @Override
+//    public void readFile(String fileName, String fileMask, String user) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
     @Override
     public boolean fileExists(String fileName, String fileMask, String user) {
