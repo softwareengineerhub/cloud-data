@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface MetaDataDAO {
     
+    public boolean bucketExists(String user);
+    
     public boolean fileExists(String fileName, String fileMask, String user);
     
     public void createFile(String fileName, String fileMask, long size, String device, long currentDate, long createdDate, String user);

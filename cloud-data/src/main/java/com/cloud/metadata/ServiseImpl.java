@@ -14,8 +14,8 @@ public class ServiseImpl implements Servise{
     @Override
     public String fileNameParser(String headerValue) {
         int startIndex = headerValue.indexOf("filename=\"");
-        int endIndex = headerValue.indexOf(".pdf");
-        return headerValue.substring(startIndex, endIndex);
+        int endIndex = headerValue.lastIndexOf(".");
+        return headerValue.substring(startIndex+10, endIndex);
     }
     
 }

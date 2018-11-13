@@ -38,6 +38,7 @@ public class UploadServlet extends HttpServlet {
     private MetaDataDAO metaDataDAO = new MetaDataDAOImpl();
     private Servise servise = new ServiseImpl();
 
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Collection<Part> files = req.getParts();
@@ -64,12 +65,12 @@ public class UploadServlet extends HttpServlet {
             //System.out.println(part.getName());
             //System.out.println(part.getSize());
             long currentDate = System.currentTimeMillis();
-            boolean fileExists = metaDataDAO.fileExists(part.getName(), fileMask, user);
+            boolean fileExists = metaDataDAO.fileExists(fileName, fileMask, user);
             System.out.println("fileExists="+fileExists);
             if (!fileExists) {
-                metaDataDAO.createFile(part.getName(), fileMask, part.getSize(), "device", currentDate, currentDate, user);
+                metaDataDAO.createFile(fileName, fileMask, part.getSize(), "device", currentDate, currentDate, user);
             } else {
-                metaDataDAO.updateFile(part.getName(), fileMask, part.getSize(), "device", currentDate, user);
+                metaDataDAO.updateFile(fileName, fileMask, part.getSize(), "device", currentDate, user);
             }
             //user
 

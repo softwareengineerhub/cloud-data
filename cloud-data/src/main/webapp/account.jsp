@@ -20,40 +20,46 @@
     </head>
     <body>
         <%-----------------------------1--------------------------------------%>
-        <h1>Account page!, <%=request.getSession().getAttribute("user")%></h1>
-        <br/>
-        <a href="LoginServlet">Logout</a>
-        <br>
-        <%-----------------------------1--------------------------------------%>
-        <%-----------------------##############-------------------------------%>
-        <%-----------------------------2--------------------------------------%>
-        <%
-            String action = request.getParameter("action");
-            if (action != null) {
-        %>
-        <%="File upload result: " + request.getParameter("action")%>
-        <%
-            }
-        %>
-        Upload file:<br>
-        <form method="POST" action="UploadServlet" enctype="multipart/form-data">
-            <input type="file" name="data" />
-            <input type="submit" value="SAVE/UPDATE"/>            
-        </form>
-        <%-------------------------------2------------------------------------%>
-        <%-----------------------##############-------------------------------%>
-        <%-------------------------------3------------------------------------%>
-        <% MetaDataDAO dao = new MetaDataDAOImpl();
-            String user = request.getSession().getAttribute("user") + "";
-            List<FileData> files = dao.getAll(user);
-        %>
+    <center>
+        <h1>
+            Hi, <%=request.getSession().getAttribute("user")%>!          <a href="LoginServlet">Logout</a>
+        </h1>
+    </center>
+    <%-----------------------------1--------------------------------------%>
+    <%-----------------------##############-------------------------------%>
+    <%-----------------------------2--------------------------------------%>
+    <%
+        String action = request.getParameter("action");
+        if (action != null) {
+    %>
+    <%="File upload result: " + request.getParameter("action")%>
+    <%
+        }
+    %>        
+    <p>Upload file:<p>
+    <form method="POST" action="AWSUploadServlet" enctype="multipart/form-data">
+        <input type="file" name="data" />
+        <input type="submit" value="SAVE/UPDATE"/>            
+    </form>
+    <br><br>
+    <form action="DownloadServlet" method="get">    
+        <input type="submit" value="Download latest file" >
+    </form>
+    <!--<p><a href="DownloadServlet">Download latest file:</a><p>-->
+    <%-------------------------------2------------------------------------%>
+    <%-----------------------##############-------------------------------%>
+    <%-------------------------------3------------------------------------%>
+    <% MetaDataDAO dao = new MetaDataDAOImpl();
+        String user = request.getSession().getAttribute("user") + "";
+        List<FileData> files = dao.getAll(user);
+    %>
     <center>
         <table>
             <tr>
-                <td><p><b>FileName</b></p></td>
-                <td><p><b>FileSize</b></p></td>
-                <td><p><b>Type</b></p></td>
-                <td><p><b>CreationDate</b></p></td>
+                <th><p><b>FileName</b></p></th>
+                <th><p><b>FileSize</b></p></th>
+                <th><p><b>Type</b></p></th>
+                <th><p><b>CreationDate</b></p></th>
             </tr>
             <%for (int i = 0; i < files.size(); i++) {%>
             <tr>
@@ -74,16 +80,16 @@
                     </form>
                 </td>
             </tr>
-    <%
-        }
-    %>
+            <%
+                }
+            %>
         </table>
     </center>
 
     <%-------------------------------3------------------------------------%>
 
-    <br><br><br>        
-    <a href="DownloadServlet">Download latest file:</a>
+
+
 
 </body>
 </html>

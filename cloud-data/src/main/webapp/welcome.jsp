@@ -17,7 +17,7 @@
     <body>
     <center>
         <h1>Cloud App</h1>
-        <p>If you want to login please: <a href="account.jsp" target="_blank">go here</a></p>
+        <p>If you want to login please: <a href="account.jsp">go here</a></p>
         <p>To signup: <a href="signup.jsp" > go here</a></p>
         <p>More about us: <a href="info.jsp" target="_blank"> go here</a></p>
     </center>
