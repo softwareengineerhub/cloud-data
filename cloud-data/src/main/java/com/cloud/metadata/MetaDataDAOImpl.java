@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
@@ -28,13 +30,13 @@ public class MetaDataDAOImpl implements MetaDataDAO {
     private DataSource ds;
 
     public MetaDataDAOImpl() {
-        /*try {
+        try {
             InitialContext ctx = new InitialContext();
-            ds = (DataSource) ctx.lookup("cloudDataDataSource");
+            ds = (DataSource) ctx.lookup("java:comp/env/cloudDataDataSource");
         } catch (NamingException ex) {
-            Logger.getLogger(AuthDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        ds = new FakeDS();
+            throw new RuntimeException(ex);
+        }
+        //ds = new FakeDS();
     }
     
     @Override
@@ -163,6 +165,23 @@ public class MetaDataDAOImpl implements MetaDataDAO {
                 return rs.getInt(1) >0;
             } 
             return false;
+        }catch(Exception ex){
+            throw new RuntimeException(ex);
+        }
+    }
+
+    @Override
+    public FileData getFileMetaDataBuFileId(int id) {
+        FileData fileData = new FileData();
+        try(Connection c = ds.getConnection()){
+            PreparedStatement ps = c.prepareStatement("SELECT * FROM files where id=?");
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                fileData.setFileName(rs.getString("name"));
+                fileData.setFileMask(rs.getString("type"));
+            }
+            return fileData;
         }catch(Exception ex){
             throw new RuntimeException(ex);
         }

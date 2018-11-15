@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
@@ -21,13 +23,13 @@ public class AuthDAOImpl implements AuthDAO {
     private DataSource ds;
 
     public AuthDAOImpl() {
-        /*try {
+        try {
             InitialContext ctx = new InitialContext();
-            ds = (DataSource) ctx.lookup("cloudDataDataSource");
+            ds = (DataSource) ctx.lookup("java:comp/env/cloudDataDataSource");
         } catch (NamingException ex) {
-            Logger.getLogger(AuthDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        ds = new FakeDS();
+            throw new RuntimeException(ex);
+        }
+        //ds = new FakeDS();
     }
 
     @Override

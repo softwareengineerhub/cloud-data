@@ -24,6 +24,8 @@ public interface MetaDataDAO {
     
     public void deleteFile(int id);
     
+    public FileData getFileMetaDataBuFileId(int id);
+    
     //public void readFile(String fileName, String fileMask, String user);
     
     public List<FileData> getAll(String userName);

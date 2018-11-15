@@ -68,13 +68,13 @@
                 <td><%=files.get(i).getFileMask()%></td>
                 <td><%=files.get(i).getCreatedDateAsString()%></td>
                 <td>
-                    <form action="DeleteServlet" method="post">
+                    <form action="AWSDeleteServlet" method="post">
                         <input type="hidden" name="id" value="<%=files.get(i).getId()%>"/>
                         <input type="submit" value="DELETE" >
                     </form>
                 </td>
                 <td>
-                    <form action="DownloadServlet" method="POST">
+                    <form action="AWSDownloadServlet" method="POST">
                         <input type="hidden" name="id" value="<%=files.get(i).getId()%>"/>
                         <input type="submit" value="DOWNLOAD" >
                     </form>

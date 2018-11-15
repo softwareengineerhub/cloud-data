@@ -11,6 +11,7 @@ import com.app.s3api.MyS3BucketService;
 import com.app.s3api.MyS3BucketServiceImpl;
 import com.app.s3api.MyS3ObjectService;
 import com.app.s3api.MyS3OblectServiceImpl;
+import com.cloud.awsservice.resource.reader.ResourceReader;
 import com.cloud.metadata.MetaDataDAO;
 import com.cloud.metadata.MetaDataDAOImpl;
 import com.cloud.metadata.Servise;
@@ -37,7 +38,7 @@ import javax.servlet.http.Part;
 public class AWSUploadServlet extends HttpServlet {
     private MetaDataDAO metaDataDAO = new MetaDataDAOImpl();
     private Servise servise = new ServiseImpl();
-    
+    private ResourceReader resourceReader = new ResourceReader();
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -70,7 +71,7 @@ public class AWSUploadServlet extends HttpServlet {
     
     
     private void makeAwsBucketIfNotExists(String user){
-        MyS3BucketService myS3BucketService = new MyS3BucketServiceImpl();
+        MyS3BucketService myS3BucketService = new MyS3BucketServiceImpl(resourceReader.getAccesskeyid(), resourceReader.getSecretaccesskey(), resourceReader.getRegion());
         List<Bucket> buckets = myS3BucketService.getAllBuckets();
         for(Bucket bucket: buckets){
             if(bucket.getName().equals(user)){
@@ -81,7 +82,7 @@ public class AWSUploadServlet extends HttpServlet {
     }
     
     private void makeAwsBucket(String user){
-        MyS3BucketService myS3BucketService = new MyS3BucketServiceImpl();
+        MyS3BucketService myS3BucketService = new MyS3BucketServiceImpl(resourceReader.getAccesskeyid(), resourceReader.getSecretaccesskey(), resourceReader.getRegion());
         try{
             myS3BucketService.createBucket(user);        
         }catch(Exception ex){
@@ -91,7 +92,7 @@ public class AWSUploadServlet extends HttpServlet {
     
     
     private void createAwsObject(String user, String fileName,String fileMask, InputStream in){
-        MyS3ObjectService myS3ObjectService = new MyS3OblectServiceImpl();
+        MyS3ObjectService myS3ObjectService = new MyS3OblectServiceImpl(resourceReader.getAccesskeyid(), resourceReader.getSecretaccesskey(), resourceReader.getRegion());
         myS3ObjectService.createObject(user, fileName+"."+fileMask, in, new ObjectMetadata());
     }
     
