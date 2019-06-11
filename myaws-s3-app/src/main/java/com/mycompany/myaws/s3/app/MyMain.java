@@ -29,7 +29,7 @@ public class MyMain {
     public static void main(String[] args) throws FileNotFoundException, IOException {
 //        Properties
         Properties property = new Properties();
-        FileReader fr = new FileReader("C:\\JavaProjects\\2018\\myaws-s3-app\\src\\main\\resources\\MyPropertyFile.properties");
+        FileReader fr = new FileReader("E:\\Projects\\Github\\softwareengineerhub\\cloud-data\\myaws-s3-app\\src\\main\\resources\\MyPropertyFile.properties");
         property.load(fr);
         String filedir = property.getProperty("filedir");
         String filename = property.getProperty("filename");
